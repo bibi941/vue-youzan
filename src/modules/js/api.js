@@ -12,3 +12,4 @@ for (let key in url) {
 }
 
 export default url
+
