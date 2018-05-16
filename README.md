@@ -1,4 +1,4 @@
-# vue-有赞
+# vue-移动端有赞商城
 
 > A Vue.js project
 
