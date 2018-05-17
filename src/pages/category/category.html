@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="no-js " lang="zh-CN">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="dns-prefetch" href="https://dn-kdt-img.qbox.me/">
+  <link rel="dns-prefetch" href="https://img.yzcdn.cn/">
+  <link rel="dns-prefetch" href="https://b.yzcdn.cn/">
+  <link rel="dns-prefetch" href="https://su.yzcdn.cn/">
+  <link rel="dns-prefetch" href="https://h5.youzan.com/v2/">
+  <link rel="dns-prefetch" href="https://h5.youzan.com/">
+  <meta name="keywords" content="有赞,移动电商服务平台">
+  <meta name="description" content="有赞是帮助商家在微信上搭建微信商城的平台，提供店铺、商品、订单、物流、消息和客户的管理模块，同时还提供丰富的营销应用和活动插件。">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="cleartype" content="on">
+  <link rel="shortcut icon" href="https://b.yzcdn.cn/v2/image/yz_fc.ico">
+  <title>分类</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/category.css">
+</head>
+
+<body class=" " style="">
+  <div id="app">
+    <div class="container with-bottom-nav" style="min-height: 667px; height: 667px;">
+      <div class="custom-search js-search-bar">
+        <form>
+          <input type="search" class="custom-search-input" autocomplete="off" name="keyword" value="" placeholder="搜索更赞的商品">
+          <span class="icon-custom-search"></span>
+        </form>
+        <button class="custom-search-type-selection-btn">商品</button>
+        <span class="cancel">取消</span>
+        <div class="search-type-dropdown-menu" style="display: none;">
+          <span class="search-type-dropdown-menu-indicator">
+            <i></i>
+          </span>
+          <div class="drop-menu-content">
+            <div class="search-type-goods">
+              <i class="icon-goods"></i>
+              <span>商品</span>
+            </div>
+            <div class="search-type-dropdown-menu-divider"></div>
+            <div class="search-type-shop">
+              <i class="icon-shop"></i>
+              <span>店铺</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="search-content" style="display: none;"></div>
+      <div class="content" style="height: 617px;">
+        <div class="class-nav">
+          <div id="scroll-nav" style="height: 100%;">
+            <ul class="nav" id="scroll-nav-content" style="height: 540px; transform: translate3d(0px, 0px, 0px);">
+              <li v-for="(topList,index) in topLists" @click="getSubList(index,topList.id)" class="category-name js-category-name " :data-cid="topList.id"
+                :class="{active:index === topIndex}">{{topList.name}}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="class-category">
+          <div id="scroll-main-wrap" class="main-content">
+            <div v-show="topIndex===0" id="scroll-main-content" class="js-main-content inner-content" style="height: 943px; transform: translate3d(0px, 0px, 0px);">
+              <div class="hot-wrap">
+                <div class="hot-goods">
+                  <div class="hot-title">
+                    <p class="pull-left">热销商品榜</p>
+                    <a href="https://maijia.youzan.com/mars/rank/hotgoods" class="pull-right icon-right">更多</a>
+                  </div>
+                  <ul>
+                    <li v-for="(list,index) in rankData.hotGoods" class="goods-item">
+                      <a href="https://h5.youzan.com/v2/showcase/goods?alias=27cjv5wdsb4to&amp;source=yzapp&amp;f_platform=yzapp">
+                        <div class="thumb badge center-img">
+                          <img :src="list.image">
+                          <span class="num">{{index+1}}</span>
+                        </div>
+                        <div class="detail">
+                          <div class="title">{{list.name}}</div>
+                          <div class="price">￥{{list.price}}</div>
+                          <div class="recommend">
+                            <span>推荐值:</span>
+                            <span>{{list.recommend}}</span>
+
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+
+                  </ul>
+                </div>
+                <div class="hot-shops" style="position: relative;">
+                  <div class="hot-title">
+                    <p class="pull-left">TOP店铺榜</p>
+                    <a href="https://maijia.youzan.com/mars/rank/hotshops" class="pull-right icon-right">更多</a>
+                  </div>
+                  <ul>
+                    <li v-for="(lists,index) in rankData.hotShops" class="shop-item">
+                      <div class="shop-title">
+                        <span class="badge">{{index+1}}</span>
+                        <a href="https://h5.youzan.com/v2/showcase/homepage?kdt_id=10695955&amp;source=yzapp">{{lists.name}}</a>
+                        <span class="follows"> / 关注度: {{lists.follows}}</span>
+                      </div>
+                      <ul class="shop-images">
+                        <li v-for="list in lists.images">
+                          <a href="https://h5.youzan.com/v2/showcase/homepage?kdt_id=10695955&amp;source=yzapp">
+                            <img :src="list.picUrl">
+                          </a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <div class="hot-keywords">
+                  <div class="hot-title">
+                    <p class="pull-left">热搜词排行</p>
+                  </div>
+                  <ul class="keywords-list">
+                    <li v-for="list in rankData.hotKeywords">
+                      <a href="javascript:;" class="js-hot-keyword">{{list.word}}</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div v-show="topIndex>0" id="scroll-main-content" class="js-main-content inner-content" style="height: 534px; transform: translate3d(0px, 0px, 0px);">
+              <h3 class="category-title">热门品牌 </h3>
+              <ul class="category-content">
+                <li class="category-item js-category-item" data-item-id="85" data-item-name="良品铺子">
+                  <img src="https://img.yzcdn.cn/o_1a2m590lg110p1mp21nr11ffmpsl9.jpg?imageView2/2/w/120/h/0/q/75/format/jpg" alt="良品铺子" class="category-img">
+                  <span class="category-item-name">
+                    良品铺子 </span>
+                </li>
+                <li class="category-item js-category-item" data-item-id="83" data-item-name="周黑鸭">
+                  <img src="https://img.yzcdn.cn/o_1a2m59s44mo61kid1ikd5mv1cc9.jpg?imageView2/2/w/120/h/0/q/75/format/jpg" alt="周黑鸭" class="category-img">
+                  <span class="category-item-name">
+                    周黑鸭 </span>
+                </li>
+                <li class="category-item js-category-item" data-item-id="82" data-item-name="来伊份">
+                  <img src="https://img.yzcdn.cn/o_1a2m5abjoa441fjg1hdi6aeqf79.jpg?imageView2/2/w/120/h/0/q/75/format/jpg" alt="来伊份" class="category-img">
+                  <span class="category-item-name">
+                    来伊份 </span>
+                </li>
+                <li class="category-item js-category-item" data-item-id="81" data-item-name="五谷磨房">
+                  <img src="https://img.yzcdn.cn/o_1a2m5arho1icm2ncs6tdj473j9.jpg?imageView2/2/w/120/h/0/q/75/format/jpg" alt="五谷磨房" class="category-img">
+                  <span class="category-item-name">
+                    五谷磨房 </span>
+                </li>
+                <li class="category-item js-category-item" data-item-id="80" data-item-name="龙润">
+                  <img src="https://img.yzcdn.cn/o_1a2m5c6f91qe3f0v13t1516cuo9.jpg?imageView2/2/w/120/h/0/q/75/format/jpg" alt="龙润" class="category-img">
+                  <span class="category-item-name">
+                    龙润 </span>
+                </li>
+                <li class="category-item js-category-item" data-item-id="79" data-item-name="齐峰果业">
+                  <img src="https://img.yzcdn.cn/upload_files/2015/12/31/FgZ1wJ7Ag95pPFZUte2he6bzrtSk.jpg?imageView2/2/w/120/h/0/q/75/format/jpg"
+                    alt="齐峰果业" class="category-img">
+                  <span class="category-item-name">
+                    齐峰果业 </span>
+                </li>
+              </ul>
+              <h3 class="category-title"> 热门分类 </h3>
+              <ul class="category-content">
+                <li class="category-item js-category-item" data-item-id="10" data-item-name="水果">
+                  <img src="https://img.yzcdn.cn/upload_files/2015/12/28/Fk8hpTtgWFr_q7FCCGdzqXsOkYms.jpg?imageView2/2/w/120/h/0/q/75/format/jpg"
+                    alt="水果" class="category-img">
+                  <span class="category-item-name">
+                    水果 </span>
+                </li>
+                <li class="category-item js-category-item" data-item-id="835" data-item-name="生鲜">
+                  <img src="https://img.yzcdn.cn/upload_files/2015/12/28/FhUo5oH7FREcNyOQVNaSgeF3IHUw.jpg?imageView2/2/w/120/h/0/q/75/format/jpg"
+                    alt="生鲜" class="category-img">
+                  <span class="category-item-name">
+                    生鲜 </span>
+                </li>
+                <li class="category-item js-category-item" data-item-id="839" data-item-name="饼干蛋糕">
+                  <img src="https://img.yzcdn.cn/upload_files/2015/12/28/FqLVzz7mqblDP1pYEYruiDXZu7Dj.jpg?imageView2/2/w/120/h/0/q/75/format/jpg"
+                    alt="饼干蛋糕" class="category-img">
+                  <span class="category-item-name">
+                    饼干蛋糕 </span>
+                </li>
+                <li class="category-item js-category-item" data-item-id="842" data-item-name="坚果炒货">
+                  <img src="https://img.yzcdn.cn/upload_files/2015/12/28/FvVAsr7PzPg_GB1lmGwtkjQDyMAM.jpg?imageView2/2/w/120/h/0/q/75/format/jpg"
+                    alt="坚果炒货" class="category-img">
+                  <span class="category-item-name">
+                    坚果炒货 </span>
+                </li>
+                <li class="category-item js-category-item" data-item-id="9" data-item-name="休闲零食">
+                  <img src="https://img.yzcdn.cn/upload_files/2015/12/28/FoezLgMYiSvKhumdMDrfQ0xmgg_d.jpg?imageView2/2/w/120/h/0/q/75/format/jpg"
+                    alt="休闲零食" class="category-img">
+                  <span class="category-item-name">
+                    休闲零食 </span>
+                </li>
+                <li class="category-item js-category-item" data-item-id="14" data-item-name="茶饮">
+                  <img src="https://img.yzcdn.cn/upload_files/2015/12/28/FhoZy7_wrnk78MoFX_iz7sXHWR_F.jpg?imageView2/2/w/120/h/0/q/75/format/jpg"
+                    alt="茶饮" class="category-img">
+                  <span class="category-item-name">
+                    茶饮 </span>
+                </li>
+                <li class="category-item js-category-item" data-item-id="845" data-item-name="酒水">
+                  <img src="https://img.yzcdn.cn/upload_files/2015/12/28/FkSkqBCLt_Y3NdRqYtzGAKSQNzEY.jpg?imageView2/2/w/120/h/0/q/75/format/jpg"
+                    alt="酒水" class="category-img">
+                  <span class="category-item-name">
+                    酒水 </span>
+                </li>
+                <li class="category-item js-category-item" data-item-id="13" data-item-name="粮油干货">
+                  <img src="https://img.yzcdn.cn/upload_files/2015/12/28/FhrpDJ99PvIO5jbahU_V-a1Jcqnz.jpg?imageView2/2/w/120/h/0/q/75/format/jpg"
+                    alt="粮油干货" class="category-img">
+                  <span class="category-item-name">
+                    粮油干货 </span>
+                </li>
+                <li class="category-item js-category-item" data-item-id="16" data-item-name="营养保健品">
+                  <img src="https://img.yzcdn.cn/upload_files/2015/12/28/Ft9GDVJJ39BaoliQ2fUn546haQ8C.jpg?imageView2/2/w/120/h/0/q/75/format/jpg"
+                    alt="营养保健品" class="category-img">
+                  <span class="category-item-name">
+                    营养保健品 </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <foot></foot>
+  </div>
+
+</body>
+
+</html>
