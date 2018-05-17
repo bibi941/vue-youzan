@@ -4,12 +4,12 @@ import './index.css'
 import Vue from 'vue'
 import axios from 'axios'
 import url from 'js/api.js'
-
-import Foot from 'components/Foot.vue'
-
 //mint-ui
 import { InfiniteScroll } from 'mint-ui'
 Vue.use(InfiniteScroll)
+//组件
+import Foot from 'components/Foot.vue'
+import Swiper from 'components/Swiper.vue'
 
 let app = new Vue({
   el: '#app',
@@ -17,18 +17,21 @@ let app = new Vue({
     lists: null,
     pageNum: 1,
     loading: false,
-    loadingOver: false
+    loadingOver: false,
+    bannerLists: null
   },
   created() {
     this.getList()
+    this.getBanner()
   },
   methods: {
     getList() {
       if (this.loadingOver) return
       this.loading = true
-      axios.post(url.hotLists, {
+      axios
+        .post(url.hotLists, {
           pageNum: this.pageNum,
-          pageSize: 10
+          pageSize: 6
         })
         .then(data => {
           let currentList = data.data.lists
@@ -45,9 +48,16 @@ let app = new Vue({
           this.loading = false
           this.pageNum += 1
         })
+    },
+    getBanner() {
+      axios.get(url.banner).then(data => {
+        this.bannerLists = data.data.lists
+      })
     }
   },
+
   components: {
-    Foot
+    Foot,
+    Swiper
   }
 })

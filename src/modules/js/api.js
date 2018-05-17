@@ -1,5 +1,7 @@
+//Rap的mock数据
 let url = {
-  hotLists: '/index/hotList'
+  hotLists: '/index/hotList',
+  banner: '/index/banner'
 }
 //开发环境和真是环境切换
 // let host=""
