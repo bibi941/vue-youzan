@@ -9,10 +9,10 @@ import Foot from 'components/Foot.vue'
 let app = new Vue({
   el: '#app',
   data: {
-    topLists: null,
+    topLists: '',
     topIndex: 0,
-    subData: null,
-    rankData: null,
+    subData: '',
+    rankData: '',
   },
   created() {
     this.getToplists()
@@ -40,11 +40,16 @@ let app = new Vue({
     //综合排行
     getRank() {
       axios.post(url.rank).then(data => {
-        this.rankData = data.data.data
+        this.rankData = data.data.data  
       })
     }
   },
   components: {
     Foot
+  },
+  filters: {
+    number(price) {
+      return price+'.00'
+    }
   }
 })

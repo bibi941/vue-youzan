@@ -14,11 +14,11 @@ import Swiper from 'components/Swiper.vue'
 let app = new Vue({
   el: '#app',
   data: {
-    lists: null,
+    lists: '',
     pageNum: 1,
     loading: false,
     loadingOver: false,
-    bannerLists: null
+    bannerLists: ''
   },
   created() {
     this.getList()
@@ -28,8 +28,7 @@ let app = new Vue({
     getList() {
       if (this.loadingOver) return
       this.loading = true
-      axios
-        .post(url.hotLists, {
+      axios.post(url.hotLists, {
           pageNum: this.pageNum,
           pageSize: 6
         })
