@@ -30,7 +30,7 @@
   <div id="app">
     <div class="container with-bottom-nav" style="min-height: 667px;">
       <div class="content">
-          <swiper :bannerlists='bannerLists' v-if="bannerLists"></swiper>
+        <swiper :bannerlists='bannerLists' v-if="bannerLists"></swiper>
         <a href="https://maijia.youzan.com/mars/notice/detail?id=" class="notice"></a>
         <div class="section-title">优店推荐</div>
         <div class="section-content shops">
@@ -63,7 +63,7 @@
         </div>
         <div class="hot-goods js-waterfull-wrap" data-src="">
           <ul class="js-list js-lazy" data-src="" v-infinite-scroll="getList" infinite-scroll-disabled="loading" infinite-scroll-distance="0">
-            <li v-for="list in lists" >
+            <li v-for="list in lists">
               <div class="goods-item">
                 <a href="https://h5.youzan.com/v2/showcase/goods?alias=2fwig6rnqfq6m&amp;source=yzapp&amp;f_platform=yzapp">
                   <div class="thumb img-box">
@@ -71,7 +71,7 @@
                   </div>
                   <div class="detail">
                     <div class="title">{{list.name}}</div>
-                    <div class="price">￥{{list.price}}</div>
+                    <div class="price">￥{{list.price|currency}}</div>
                   </div>
                 </a>
               </div>

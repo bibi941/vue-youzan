@@ -5,6 +5,7 @@ import Vue from 'vue'
 import axios from 'axios'
 import url from 'js/api.js'
 import qs from 'qs'
+import mixin from 'js/mixin.js'
 
 let {
   keyword,
@@ -33,10 +34,5 @@ new Vue({
         })
     }
   },
-   filters: {
-     number(price) {
-       return price + '.00'
-     }
-   }
-
+  mixins:[mixin]
 })

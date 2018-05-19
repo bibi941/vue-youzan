@@ -6,6 +6,7 @@ import axios from 'axios'
 import url from 'js/api.js'
 
 import Foot from 'components/Foot.vue'
+import mixin from 'js/mixin.js'
 let app = new Vue({
   el: '#app',
   data: {
@@ -53,9 +54,5 @@ let app = new Vue({
   components: {
     Foot
   },
-  filters: {
-    number(price) {
-      return price + '.00'
-    }
-  }
+  mixins: [mixin] 
 })

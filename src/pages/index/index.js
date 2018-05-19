@@ -10,6 +10,7 @@ Vue.use(InfiniteScroll)
 //组件
 import Foot from 'components/Foot.vue'
 import Swiper from 'components/Swiper.vue'
+import mixin from 'js/mixin.js'
 
 let app = new Vue({
   el: '#app',
@@ -54,9 +55,9 @@ let app = new Vue({
       })
     }
   },
-
   components: {
     Foot,
     Swiper
-  }
+  },
+   mixins: [mixin]
 })

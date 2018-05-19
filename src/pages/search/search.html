@@ -62,7 +62,8 @@
               <div class="detail">
                 <div class="title">{{lists.name}}</div>
                 <div class="meta relative">
-                  <span class="price">￥{{lists.price|number}}</span>
+<span class="price">￥{{lists.price|currency}}</span>
+
                   <span class="ship pull-right" v-if="lists.isPostage">包邮</span>
                 </div>
               </div>
