@@ -17,6 +17,7 @@ new Vue({
   data: {
     serachList: '',
     keyword,
+    gotoTopAble: false
 
   },
   created() {
@@ -30,9 +31,20 @@ new Vue({
           id
         })
         .then((data) => {
-          this.serachList=data.data.list
+          this.serachList = data.data.list
         })
+    },
+    move() {
+      let leaTop = document.documentElement.scrollTop
+      if (leaTop > 100) {
+        this.gotoTopAble = true
+      } else {
+        this.gotoTopAble = false
+      }
+    },
+    toTop() {
+      
     }
   },
-  mixins:[mixin]
+  mixins: [mixin]
 })
