@@ -4,7 +4,8 @@ let url = {
   banner: '/index/banner',
   topList: '/category/topList',
   subList: '/category/subList',
-  rank: '/category/rank'
+  rank: '/category/rank',
+  serachList: '/search/list'
 }
 //开发环境和真是环境切换
 // let host=""

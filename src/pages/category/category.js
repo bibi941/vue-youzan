@@ -32,7 +32,9 @@ let app = new Vue({
       if (index === 0) {
         this.getRank()
       } else {
-        axios.post(url.subList, { id }).then(data => {
+        axios.post(url.subList, {
+          id
+        }).then(data => {
           this.subData = data.data.data
         })
       }
@@ -40,8 +42,12 @@ let app = new Vue({
     //综合排行
     getRank() {
       axios.post(url.rank).then(data => {
-        this.rankData = data.data.data  
+        this.rankData = data.data.data
       })
+    },
+    toSearch(list) {
+      location.href = `search.html?keyword=${list.name}&id=${list.id}`
+
     }
   },
   components: {
@@ -49,7 +55,7 @@ let app = new Vue({
   },
   filters: {
     number(price) {
-      return price+'.00'
+      return price + '.00'
     }
   }
 })
