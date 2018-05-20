@@ -6,6 +6,7 @@ import axios from 'axios'
 import url from 'js/api.js'
 import qs from 'qs'
 import mixin from 'js/mixin.js'
+import velocity from 'velocity-animate'
 
 let {
   keyword,
@@ -43,7 +44,7 @@ new Vue({
       }
     },
     toTop() {
-      
+      velocity(document.body, 'scroll', {diration:1000})
     }
   },
   mixins: [mixin]

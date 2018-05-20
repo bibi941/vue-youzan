@@ -5,7 +5,9 @@ let url = {
   topList: '/category/topList',
   subList: '/category/subList',
   rank: '/category/rank',
-  serachList: '/search/list'
+  serachList: '/search/list',
+  details: '/goods/details',
+  deal: '/goods/deal'
 }
 //开发环境和真是环境切换
 // let host=""

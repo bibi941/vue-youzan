@@ -20,10 +20,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/category.css">
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+
 </head>
 
 <body>
-  <div id="app">
+  <div v-cloak id="app">
     <div class="container with-bottom-nav" style="min-height: 667px; height: 667px;">
       <div class="custom-search js-search-bar">
         <form>
@@ -70,7 +76,7 @@
                   </div>
                   <ul>
                     <li v-for="(lists,index) in rankData.hotGoods" class="goods-item">
-                      <a href="https://h5.youzan.com/v2/showcase/goods?alias=27cjv5wdsb4to&amp;source=yzapp&amp;f_platform=yzapp">
+                      <a :href="'goods.html?id='+lists.id">
                         <div class="thumb badge center-img">
                           <img :src="lists.image">
                           <span class="num">{{index+1}}</span>
