@@ -19,6 +19,7 @@ let {id} = qs.parse(location.search.substr(1))
 new Vue({
   el: '#app',
   data: {
+    id,
     details: '',
     detailsTab: ['商品详情', '本店成交'],
     tabIndex: 0,
@@ -27,6 +28,8 @@ new Vue({
     skuType: 1,
     shouwSkuAble: false,
     skuNumber: 1,
+    isAddCart: false,
+    ifAlertCart:false
   },
   created() {
     this.geDetails()
@@ -79,8 +82,12 @@ new Vue({
       axios.post(url.cart, { id, number: this.skuNumber }).then(
         data => {
           if (data.data.status === 200) {
-            console.log(1);
-            this.shouwSkuAble=false
+            this.shouwSkuAble = false
+            this.isAddCart = true
+            this.ifAlertCart = true
+            setTimeout(() => {
+              this.ifAlertCart=false
+            }, 1000)
           }
         }
       )

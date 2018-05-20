@@ -579,10 +579,7 @@
     color: #999
   }
   
-  .fullscreen-guide.hide,
-  .motify {
-    display: none
-  }
+  
   
   .btn-disabled,
   .btn[disabled] {

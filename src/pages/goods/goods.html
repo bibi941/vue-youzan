@@ -160,10 +160,10 @@
                   <a class="js-show-more-btn icon show-more-btn hide"></a>
                 </div>
               </div> -->
-            <div id="right-icon" class="js-right-icon ">
+            <div v-if="isAddCart" id="right-icon" class="js-right-icon ">
               <div class="js-right-icon-container right-icon-container clearfix">
-                <a id="global-cart" href="https://h5.youzan.com/v2/trade/cart?kdt_id=16546132" class="icon new s0" style="">
-                  <p class="icon-img"></p>
+                <a id="global-cart" :href="'cart.html?id'+id" class="icon new s0" style="">
+                  <p  class="icon-img"></p>
                   <p class="icon-txt">购物车</p>
                 </a>
                 <a class="js-show-more-btn icon show-more-btn "></a>
@@ -337,7 +337,7 @@
         </div>
       </div>
       </transition>
-      <div class="motify" style="display: none;">
+      <div v-show="ifAlertCart" class="motify" >
         <div class="motify-inner">已成功添加到购物车</div>
       </div>
     </div>
