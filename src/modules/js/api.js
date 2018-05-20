@@ -7,7 +7,8 @@ let url = {
   rank: '/category/rank',
   serachList: '/search/list',
   details: '/goods/details',
-  deal: '/goods/deal'
+  deal: '/goods/deal',
+  cart:'/cart/add'
 }
 //开发环境和真是环境切换
 // let host=""

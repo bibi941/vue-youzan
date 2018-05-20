@@ -1,9 +1,9 @@
 <template>
   <div class="swiper-container">
     <div class="swiper-wrapper">
-      <div class="swp-page swiper-slide" v-for="banner in bannerlists">
-        <a class="js-no-follow" :href="banner.clickUrl">
-          <img class="goods-main-photo fadeIn" :src="banner.image">
+      <div class="swp-page swiper-slide" v-for="list in bannerlists">
+        <a class="js-no-follow" :href="list.clickUrl">
+          <img class="goods-main-photo fadeIn" :src="list.image">
         </a>
       </div>
     </div>
@@ -17,7 +17,7 @@ import 'swiper/dist/css/swiper.css'
 
 export default {
   name: 'swiper',
-  props: ['bannerlists'],
+  props: ['bannerlists',],
   mounted() {
     new Swiper('.swiper-container', {
       autoplay: true,

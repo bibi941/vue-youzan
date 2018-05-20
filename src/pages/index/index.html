@@ -36,6 +36,9 @@
     <div class="container with-bottom-nav" style="min-height: 667px;">
       <div class="content">
         <swiper :bannerlists='bannerLists' v-if="bannerLists"></swiper>
+           <div class="loading-more" v-if="!bannerLists">
+            <span></span>
+          </div>
         <a href="https://maijia.youzan.com/mars/notice/detail?id=" class="notice"></a>
         <div class="section-title">优店推荐</div>
         <div class="section-content shops">
@@ -82,7 +85,7 @@
               </div>
             </li>
           </ul>
-          <div class="loading-more" v-show="loading">
+          <div class="loading-more" v-if="loading">
             <span></span>
           </div>
         </div>
