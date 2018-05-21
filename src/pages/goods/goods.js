@@ -78,7 +78,6 @@ new Vue({
       }this.skuNumber+=number
     },
     addCart() {
-      console.log(1);
       axios.post(url.cart, { id, number: this.skuNumber }).then(
         data => {
           if (data.data.status === 200) {

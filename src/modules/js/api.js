@@ -8,7 +8,11 @@ let url = {
   serachList: '/search/list',
   details: '/goods/details',
   deal: '/goods/deal',
-  cart:'/cart/add'
+  cart: '/cart/add',
+  cartList: '/cart/list',
+  cartReduce: '/cart/cartreduce',
+  cartRemove: '/cart/cartremove',
+  cartMultiRemove:'/cart/mremove',
 }
 //开发环境和真是环境切换
 // let host=""
