@@ -15,6 +15,8 @@ new Vue({
     total: 0,
     editingShop: null,
     editingShopIndex: -1,
+    removePopup: false,
+    removeData:'',
   },
   created() {
     this.getList()
@@ -138,6 +140,51 @@ new Vue({
       //全局数据
       this.editingShop = shop.editing ? shop : null
       this.editingShopIndex = shop.editing ? shopIndex : -1
+    },
+    reduce(good) {
+     if (good.number===1) 
+       return
+      axios.post(url.cartReduce, {
+        id: good.id,
+       number:1 
+      }).then(data => {
+       good.number-=1
+     })
+     },
+    add(good) {
+       axios.post(url.cartAdd, {
+        id: good.id,
+        number:1
+      }).then((data) => {
+        good.number+=1
+      })
+    },
+    removeConfirm() {
+      let{shop, shopIndex, good, goodIndex}=this.removeData
+      axios.post(url.cartRemove, {
+        id: good.id
+      }).then(data => {
+        shop.goodsList.splice(goodIndex, 1)
+        if (shop.goodsList.length===0) {
+          this.lists.splice(shopIndex, 1)
+          this.removeShop()
+        }
+        this.removePopup=false
+      })
+    },
+    removeShop() {
+      //店铺所有商品被删除完后，删除店铺，恢复初始状态
+      this.editingShop = '',
+      this.editingShopIndex=-1  
+      this.lists.forEach(shop => {
+        shop.editing = false
+        shop.editingMsg='编辑'
+      })
+    },
+    //删除商品
+    remove(shop, shopIndex, good, goodIndex) {
+      this.removePopup = true
+      this.removeData={shop, shopIndex, good, goodIndex}
     }
   },
   mixins: [mixin]

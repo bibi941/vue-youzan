@@ -80,11 +80,11 @@
                           <div class="num" v-show="shop.editing">
                             <!---->
                             <div class="quantity">
-                              <button type="button" class="minus disabled"></button>
+                              <button :class="{disabled:good.number===1}" type="button" class="minus "></button>
                               <input v-model="good.number" type="text" pattern="[0-9]*" class="txt">
                               <button type="button" class="plus "></button>
-                              <div class="response-area response-area-minus"></div>
-                              <div class="response-area response-area-plus"></div>
+                              <div @click="reduce(good)" class="response-area response-area-minus"></div>
+                              <div @click="add(good)" class="response-area response-area-plus"></div>
                             </div>
                           </div>
                           <div class="price c-orange">
@@ -94,7 +94,7 @@
                         </div>
                         <div class="error-box"></div>
                       </div>
-                      <div class="delete-btn">
+                      <div @click="remove(shop,shopIndex,good,goodIndex)"  class="delete-btn">
                         <span>删除</span>
                       </div>
                     </div>
@@ -165,27 +165,39 @@
                 <span class="js-total-price" style="color: rgb(255, 102, 0);">{{total|currency}}</span>
                 <p class="c-gray-dark">不含运费</p>
               </div>
-              <button href="javascript:;" v-show="!editingShop" 
-              :disabled="selectLists.length===0" 
-              class="js-go-pay btn btn-orange-dark font-size-14">
+              <button href="javascript:;" v-show="!editingShop" :disabled="selectLists.length===0" class="js-go-pay btn btn-orange-dark font-size-14">
                 结算
               </button>
               <!-- 编辑状态-删除 -->
-              <button v-show="editingShop" href="javascript:;"
-               :disabled="removeLists.length===0" 
-               class="j-delete-goods btn font-size-14 btn-red">
-               删除
+              <button v-show="editingShop" href="javascript:;" :disabled="removeLists.length===0" class="j-delete-goods btn font-size-14 btn-red">
+                删除
               </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="footer" style="min-height: 86px;">
-    <div class="copyright">
-      <div class="ft-copyright " style="background-image: url(https://img.yzcdn.cn/upload_files/2016/11/15/147918630760182374.png);">
-        <a class="yz-logo" href="https://www.youzan.com/?from_source=support_logo">有赞提供技术支持</a>
+    <!-- 确认删除商品弹框 -->
+    <div id="0SuefKPV4p" v-show="removePopup" style="height: 100%; position: fixed; top: 0px; left: 0px; right: 0px; background-color: rgba(0, 0, 0, 0.7); z-index: 1000;  opacity: 1;"></div>
+    <div id="d2tfiX27YS" v-show="removePopup" class="popout-confirm popout-box" style="overflow: hidden; position: absolute; z-index: 1000; top: 50%; left: 50%; transform: translate3d(-50%, -50%, 0px); visibility: visible; border-radius: 4px; background: white; width: 270px; padding: 15px; opacity: 1;">
+      <div class="confirm-content font-size-14" style="line-height: 20px; padding: 5px 5px 10px;">
+        确认要删除商品吗？
+      </div>
+      <hr style="margin: 9px -15px 10px;">
+      <div class="btn-2-1" style="width: 47.5%;">
+        <p class="js-cancel center font-size-16" style="padding-top: 5px;" @click="removePopup=false">取消</p>
+      </div>
+      <div class="btn-2-1" style="width: 47.5%;">
+        <p class="js-ok center c-green font-size-16" style="padding-top: 5px;" @click="removeConfirm">确定</p>
+      </div>
+    </div>
+    <!-- 删除商品遮罩层 -->
+
+    <div class="footer" style="min-height: 86px;">
+      <div class="copyright">
+        <div class="ft-copyright " style="background-image: url(https://img.yzcdn.cn/upload_files/2016/11/15/147918630760182374.png);">
+          <a class="yz-logo" href="https://www.youzan.com/?from_source=support_logo">有赞提供技术支持</a>
+        </div>
       </div>
     </div>
   </div>

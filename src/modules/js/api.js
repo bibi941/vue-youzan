@@ -8,11 +8,12 @@ let url = {
   serachList: '/search/list',
   details: '/goods/details',
   deal: '/goods/deal',
-  cart: '/cart/add',
+  cartAdd: '/cart/add',
+  cartRemove: '/cart/remove',
+  cartMremove: '/cart/mremove',
+  cartReduce: '/cart/reduce',
   cartList: '/cart/list',
-  cartReduce: '/cart/cartreduce',
-  cartRemove: '/cart/cartremove',
-  cartMultiRemove:'/cart/mremove',
+  cartUpdate: '/cart/update'
 }
 //开发环境和真是环境切换
 // let host=""
