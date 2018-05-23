@@ -16,7 +16,8 @@ new Vue({
     editingShop: null,
     editingShopIndex: -1,
     removePopup: false,
-    removeData:'',
+    removeData: '',
+    removeMsg: '',
   },
   created() {
     this.getList()
@@ -77,6 +78,7 @@ new Vue({
       return []
     },
     removeLists() {
+      //用来判断显示删除和结算按钮
       if (this.editingShop) {
         let arr = []
         this.editingShop.goodsList.forEach((good) => {
@@ -142,50 +144,99 @@ new Vue({
       this.editingShopIndex = shop.editing ? shopIndex : -1
     },
     reduce(good) {
-     if (good.number===1) 
-       return
+      if (good.number === 1)
+        return
       axios.post(url.cartReduce, {
         id: good.id,
-       number:1 
+        number: 1
       }).then(data => {
-       good.number-=1
-     })
-     },
+        good.number -= 1
+      })
+    },
     add(good) {
-       axios.post(url.cartAdd, {
+      axios.post(url.cartAdd, {
         id: good.id,
-        number:1
+        number: 1
       }).then((data) => {
-        good.number+=1
+        good.number += 1
       })
     },
     removeConfirm() {
-      let{shop, shopIndex, good, goodIndex}=this.removeData
-      axios.post(url.cartRemove, {
-        id: good.id
-      }).then(data => {
-        shop.goodsList.splice(goodIndex, 1)
-        if (shop.goodsList.length===0) {
-          this.lists.splice(shopIndex, 1)
-          this.removeShop()
-        }
-        this.removePopup=false
-      })
+      if (this.removeMsg === '确定要删除该商品吗？') {
+        //单个商品删除
+        let {
+          shop,
+          shopIndex,
+          good,
+          goodIndex
+        } = this.removeData
+        //异步请求，和数据库确认成功后方可删除
+        axios.post(url.cartRemove, {
+          id: good.id
+        }).then(data => {
+          shop.goodsList.splice(goodIndex, 1)
+          if (shop.goodsList.length === 0) {
+            this.lists.splice(shopIndex, 1)
+            this.removeShop()
+          }
+          this.removePopup = false
+        })
+      } else {
+        //删除多个商品
+        let idArray = []
+        this.removeLists.forEach(good => {
+          idArray.push(good.id)
+        })
+        axios.post(url.cartMremove, {
+          idArray
+        }).then(data => {
+          let arr = []          
+          this.editingShop.goodsList.forEach(good => {
+            //每个商品是否在删除列表中
+            let index = this.removeLists.findIndex(item => {
+              return item.id === good.id
+            })
+            if (index === -1) {
+              //如果编辑列表中有商品没有被点选删除
+              arr.push(good)
+            }
+          })
+          if (arr.length) {
+            //新的编辑列表就是除开没有被点选删除的剩下的商品
+            this.editingShop.goodsList = arr
+          } else {
+            //店铺下全部商品被选择了
+            this.lists.splice(this.editingShopIndex, 1)
+            this.removeShop()
+          }
+          this.removePopup = false
+        })
+      }
     },
     removeShop() {
       //店铺所有商品被删除完后，删除店铺，恢复初始状态
       this.editingShop = '',
-      this.editingShopIndex=-1  
+        this.editingShopIndex = -1
       this.lists.forEach(shop => {
         shop.editing = false
-        shop.editingMsg='编辑'
+        shop.editingMsg = '编辑'
       })
     },
     //删除商品
     remove(shop, shopIndex, good, goodIndex) {
       this.removePopup = true
-      this.removeData={shop, shopIndex, good, goodIndex}
-    }
+      this.removeData = {
+        shop,
+        shopIndex,
+        good,
+        goodIndex
+      }
+      this.removeMsg = '确定要删除该商品吗？'
+    },
+    removeList() {
+      this.removePopup = true
+      this.removeMsg = `确定将所选 ${this.removeLists.length} 个商品删除？`
+    },
   },
   mixins: [mixin]
 })
