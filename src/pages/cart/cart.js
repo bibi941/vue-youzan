@@ -6,7 +6,7 @@ import Vue from 'vue'
 import axios from 'axios'
 import mixin from 'js/mixin.js'
 import url from 'js/api.js'
-
+import velocity from 'velocity-animate'
 
 new Vue({
   el: '.container',
@@ -190,7 +190,7 @@ new Vue({
         axios.post(url.cartMremove, {
           idArray
         }).then(data => {
-          let arr = []          
+          let arr = []
           this.editingShop.goodsList.forEach(good => {
             //每个商品是否在删除列表中
             let index = this.removeLists.findIndex(item => {
@@ -232,10 +232,30 @@ new Vue({
         goodIndex
       }
       this.removeMsg = '确定要删除该商品吗？'
+
     },
     removeList() {
       this.removePopup = true
       this.removeMsg = `确定将所选 ${this.removeLists.length} 个商品删除？`
+    },
+    start(e, good) {
+      good.startX = e.changedTouches[0].clientX
+
+    },
+    end(e, shopIndex, good, goodIndex) {
+      let endX = e.changedTouches[0].clientX
+      let left = '0'
+      //左滑
+      if (good.startX - endX > 100) {
+        left = '-60px'
+      }
+      //右滑
+      if (endX - good.startX > 100) {
+        left = '0px'
+      }
+      velocity(this.$refs[`goods-${shopIndex}-${goodIndex}`], {
+        left: left
+      })
     },
   },
   mixins: [mixin]
