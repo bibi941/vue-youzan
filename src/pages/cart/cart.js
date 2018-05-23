@@ -180,6 +180,7 @@ new Vue({
             this.removeShop()
           }
           this.removePopup = false
+          // this.$refs[`goods-${shopIndex}-${goodIndex}`][0].style.left='0px'          
         })
       } else {
         //删除多个商品
@@ -253,7 +254,7 @@ new Vue({
       if (endX - good.startX > 100) {
         left = '0px'
       }
-      velocity(this.$refs[`goods-${shopIndex}-${goodIndex}`], {
+      velocity(this.$refs[`good-${shopIndex}-${goodIndex}`], {
         left: left
       })
     },
