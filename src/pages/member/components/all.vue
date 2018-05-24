@@ -16,7 +16,18 @@
 </template>
   
 <script>
+import Address from 'js/addressService.js'
 export default {
+  data(){
+    return{
+      lists:'',
+    }
+  },
+  created(){
+    Address.lists().then(data=>{
+      
+    })
+  },
   methods:{
     toEdit(){
       this.$router.push({path:'./address/form'})

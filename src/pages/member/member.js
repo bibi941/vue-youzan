@@ -14,6 +14,7 @@ const routes = [{
       path: '',
       //重定向
       component: require('./components/all.vue')
+      // redirect:'all'
     }, {
       path: 'all',
       component: require('./components/all.vue')
