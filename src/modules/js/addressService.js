@@ -15,7 +15,7 @@ class Address{
     return fetch(url.addressRemove,id)
   }
 
-  static update(agr) {
+  static update(arg) {
     return fetch(url.addressUpdate,arg)
   }
 
