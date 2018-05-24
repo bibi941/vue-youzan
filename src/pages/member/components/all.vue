@@ -1,14 +1,20 @@
 <template>
    <div class="container " style="min-height: 597px;">
     <div class="block-list address-list section section-first js-no-webview-block">
-      <a @click="toEdit" class="block-item js-address-item address-item " >
-        <div class="address-title">tony 13112345678</div>
-        <p>广东省珠海市香洲区南方软件园</p>
+      <a v-for="list in lists" 
+      :key="list.id"  
+      @click="toEdit(list)" 
+      class="block-item js-address-item address-item " 
+      :class="{'address-item-default':list.isDefault}"
+      >
+        <div class="address-title">{{list.name}} {{list.tel}}</div>
+        <p>{{list.provinceName}}{{list.cityName}}{{list.districtName}}{{list.address}}</p>
         <a class="address-edit">修改</a>
       </a>
     </div>
     <div class="block stick-bottom-row center">
-      <router-link to="/address/form" class="btn btn-blue js-no-webview-block js-add-address-btn" >
+      <router-link :to="{name:'form',query: { type: 'add' }}" 
+      class="btn btn-blue js-no-webview-block js-add-address-btn" >
             新增地址
         </router-link>
     </div>
@@ -18,24 +24,26 @@
 <script>
 import Address from 'js/addressService.js'
 export default {
-  data(){
-    return{
-      lists:'',
+  data() {
+    return {
+      lists: ''
     }
   },
-  created(){
-    Address.lists().then(data=>{
-      
+  created() {
+    Address.lists().then(data => {
+      this.lists = data.data.lists
     })
   },
-  methods:{
-    toEdit(){
-      this.$router.push({path:'./address/form'})
+  methods: {
+    toEdit(list) {
+      this.$router.push({
+        name: 'form',
+        query: { type: 'edit', instance: list }
+      })
     }
   }
 }
 </script>
   
 <style lang="scss" scoped>
-  
 </style>

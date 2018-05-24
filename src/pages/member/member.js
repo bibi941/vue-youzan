@@ -17,9 +17,11 @@ const routes = [{
       // redirect:'all'
     }, {
       path: 'all',
-      component: require('./components/all.vue')
+      component: require('./components/all.vue'),
+      name: 'all'
     }, {
       path: 'form',
+      name: 'form',
       component: require('./components/form.vue')
     }]
   },
