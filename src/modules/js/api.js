@@ -18,7 +18,7 @@ let url = {
   addressAdd: '/address/add',
   addressRemove: '/address/remove',
   addressUpdate: '/address/update',
-  addressSelectDefault: '/address/setDefault'
+  addressSetDefault: '/address/setDefault'
 }
 //开发环境和真是环境切换
 // let host=""

@@ -22,17 +22,16 @@
 </template>
   
 <script>
-import Address from 'js/addressService.js'
 export default {
-  data() {
-    return {
-      lists: ''
+  computed: {
+    lists() {
+      return this.$store.state.lists
     }
   },
   created() {
-    Address.lists().then(data => {
-      this.lists = data.data.lists
-    })
+    if (!this.lists) {
+    this.$store.dispatch('getLists')
+    }
   },
   methods: {
     toEdit(list) {

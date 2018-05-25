@@ -35,7 +35,7 @@
       </div>
     </div>
     <div class="block section js-save block-control-btn">
-      <div @click="save" class="block-item c-blue center">保存</div>
+      <div @click="add" class="block-item c-blue center">保存</div>
     </div>
     <div v-if="type==='edit'" class="block section js-delete  block-control-btn">
       <div @click="remove" class="block-item c-red center">删除</div>
@@ -63,14 +63,14 @@ export default {
       instance: '',
       addressData: require('js/address.json'),
       cityLists: '',
-      districtLists: ''
+      districtLists: '',
       // instance: JSON.parse(sessionStorage.getItem('instance'))
     }
   },
   created() {
     //接受路由的传参
     this.type = this.$route.query.type
-    this.instance = this.$route.query.instance
+    this.instance= this.$route.query.instance
     //编辑状态定位三级列表
     if (this.type === 'edit') {
       let address = this.instance
@@ -82,6 +82,9 @@ export default {
     }
   },
   watch: {
+    lists(){
+      this.$router.go(-1)
+    },
     provinceValue(val) {
       if (val === -1) return
       let list = this.addressData.list
@@ -108,33 +111,30 @@ export default {
       }
     }
   },
+  computed:{
+    lists(){
+      return this.$store.state.lists
+    }
+  },
   methods: {
-    save() {
-      let{name,tel,provinceValue,city,id,districtValue,address,cityValue}=this
-      let data={name,tel,provinceValue,city,id,districtValue,address,cityValue}
+    add() {
+      let{name,tel,provinceValue,districtValue,address,cityValue,}=this
+      let data={name,tel,provinceValue,districtValue,address,cityValue}
       if (this.type==='add') {
-        Address.add(data).then(data=>{
-          this.$router.go(-1)
-        })
+      this.$store.dispatch('addAction',data)
       }
        if (this.type==='edit') {
-        Address.update(data).then(data=>{
-          this.$router.go(-1)
-        })
+         data.id = this.id
+       this.$store.dispatch('updateAction',data)
       }
     },
     remove(){
       if (confirm('确认删除？')) {
-        Address.remove(this.id).then(data=>{
-          this.$router.go(-1)
-        })
+        this.$store.dispatch('removeAction',this.id)
       }
     },
     setDefault(){
-        Address.setDefault(this.id).then(data=>{
-          this.$router.go(-1)
-        })
-      
+       this.$store.dispatch('setDefaultAction',this.id)      
     }
   }
 }
