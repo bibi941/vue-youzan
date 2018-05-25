@@ -82,9 +82,13 @@ export default {
     }
   },
   watch: {
-    lists(){
-      this.$router.go(-1)
+    lists:{
+      handler(){
+      this.$router.go(-1)        
+      },
+      deep:true
     },
+   
     provinceValue(val) {
       if (val === -1) return
       let list = this.addressData.list
