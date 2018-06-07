@@ -1,0 +1,191 @@
+[33mcommit 8d5cbc43f52b00cdbd17b8e589efee5e4aaab1a0[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Sat May 26 00:22:07 2018 +0800
+
+    :bug: 修改保存地址不能自动跳转
+
+[33mcommit 99f2f30f7d8bcee38922585b7690ff1699be738d[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Fri May 25 23:58:53 2018 +0800
+
+    :bug: 设为默认地址watch deep
+
+[33mcommit 05f121a5186efa28d130837cb8beb2393bca302c[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Fri May 25 23:46:52 2018 +0800
+
+    :sparkles: vuex状态管理
+
+[33mcommit 2d2ded943060bfd456e39818300dbdc5ae2d5bf2[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Thu May 24 22:21:38 2018 +0800
+
+    :sparkles: 收货地址栏三级地址逻辑
+
+[33mcommit 94d238cfeca8a69977dddec497c4294eacf2c41d[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Thu May 24 16:16:30 2018 +0800
+
+    :sparkles: 收货地址详情页数据/路由
+
+[33mcommit 730f7e3297cf9513d2452263775cdc279cf66025[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Thu May 24 10:42:20 2018 +0800
+
+    :sparkles: 地址service层封装
+
+[33mcommit b02af86b0c8d2b07fc2af24b5967c16af58f83ea[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Thu May 24 00:10:02 2018 +0800
+
+    :sparkles: 定义收货地址的嵌套路由
+
+[33mcommit 34ebac19c965926f3a8c3e1d53b8f4a40087d8fb[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Wed May 23 21:45:09 2018 +0800
+
+    :bug: 修复滑动删除，v-for和ref就地复用的bug
+
+[33mcommit 41aac688ffdb46325cd44c6706cfdd7296cdaab6[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Wed May 23 18:13:41 2018 +0800
+
+    :sparkles: 滑动删除/编辑数目只能是数字bug修复
+
+[33mcommit c1d1dfd67477ec64a51ac5fe6bb3b156c27ef39f[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Wed May 23 15:32:03 2018 +0800
+
+    :sparkles: 购物车全选删除
+
+[33mcommit 084d07a4d6e6e46a5c2de14945505613871bb904[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Tue May 22 22:57:42 2018 +0800
+
+    :sparkles: 购物车商品数量增加，单个商品删除
+
+[33mcommit 30e35068f91e106d009e9ed88ec35070e2fc8026[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Tue May 22 20:33:00 2018 +0800
+
+    :sparkles: 购物车删除ui逻辑
+
+[33mcommit e0ad1f26f67f7aa0af38250e57ed55e15fbfd55f[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Mon May 21 20:47:47 2018 +0800
+
+    :sparkles: 购物车 物品选择逻辑
+
+[33mcommit 60bc37e28bdd097fe587ac17cc36fd0273cd4b6c[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Sun May 20 23:54:43 2018 +0800
+
+    :sparkles: 跳转购物车逻辑
+
+[33mcommit e9b5b101fdf7313c00b34847454e4fab1fbbffe6[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Sun May 20 22:46:02 2018 +0800
+
+    :sparkles: 商品详情页动画/数据渲染/异步请求/跳转购物车逻辑/
+
+[33mcommit e533d2c77378380f457f886320fb6df858fda832[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Sun May 20 11:58:53 2018 +0800
+
+    :sparkles:  商品详情页-数据渲染/详情TAB切换
+
+[33mcommit cdff56e453d9344862f57170d155c32e8e647bdb[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Sat May 19 16:22:20 2018 +0800
+
+    :sparkles: 添加 Velocity.js动画库
+
+[33mcommit d6d5b8a4c156a3f1cd1c88117d32934845fc72fd[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Sat May 19 16:18:08 2018 +0800
+
+    :sparkles: 添加回到顶部逻辑
+
+[33mcommit 610a1e87450e9c6c0194bc7a4b688e216be63ac8[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Sat May 19 14:42:23 2018 +0800
+
+    :art: 添加mixin-商品售价位数处理
+
+[33mcommit 57e78b656d1e156f04a3c7c54c96ca92bfac1e8b[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Sat May 19 14:23:50 2018 +0800
+
+    :sparkles: 搜索界面渲染
+
+[33mcommit a31fed12e6038badb0d4acdb870372cf274abb0a[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Fri May 18 22:19:27 2018 +0800
+
+    :bug:  修复底部导航栏跳转，用查询参数解析
+
+[33mcommit 5e99c2eb5ea9eeb3f2c4c99e2b54038f334fc325[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Fri May 18 18:20:37 2018 +0800
+
+    添加qs 字符串解析库
+
+[33mcommit 7578c4741c9c4a974c16e40f836a6454ad26cbe9[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Fri May 18 18:18:33 2018 +0800
+
+    :art: 添加购物车、个人信息、搜索功能的源代码
+
+[33mcommit f14006fed690d261cb66f0178213baa428f52313[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Thu May 17 23:49:52 2018 +0800
+
+    :sparkles:  添加分类页的综合排行
+
+[33mcommit 600d1193a7f147d1abbdd83a4b4cb095575a4051[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Thu May 17 16:11:23 2018 +0800
+
+    :sparkles: 添加首页轮播组件
+
+[33mcommit d8a3f8d0e2a5dd4f3593e5b8e7aa45f3aa5e5e6b[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Thu May 17 11:32:58 2018 +0800
+
+    :art: foot组件化
+
+[33mcommit 80a6b0a03df07cf0f67eba0bc37945ce75fab481[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Wed May 16 22:31:43 2018 +0800
+
+    :sparkles: mint-ui+滚动组件+逻辑
+
+[33mcommit 4fd53c1e43e4f1c54879500fa54c545adb22e565[m
+Author: FANGXINGRUI <33365456+bibi941@users.noreply.github.com>
+Date:   Wed May 16 21:03:16 2018 +0800
+
+    Update README.md
+
+[33mcommit ec3b476489c08a4ffe664b43da6676fa68a6bd3c[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Wed May 16 21:01:35 2018 +0800
+
+    :sparkles: rap+mock+最新热门商品渲染
+
+[33mcommit 08bc7eac21ebd1965be5e6a25baf0b87e4679a59[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Wed May 16 16:35:26 2018 +0800
+
+    :lipstick:   添加主页面css样式
+
+[33mcommit 4f3b72697b87772bd24880e147ec8f3967d1915b[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Wed May 16 16:07:03 2018 +0800
+
+    :art: 添加主页静态页面+webpack路径修改
+
+[33mcommit 3455e9945928f71436812eeffd4ec3418539a708[m
+Author: finley <sssrrr@vip.qq.com>
+Date:   Wed May 16 14:49:10 2018 +0800
+
+    :tada: vue-cli多页面初始化

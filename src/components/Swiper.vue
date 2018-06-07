@@ -17,7 +17,7 @@ import 'swiper/dist/css/swiper.css'
 
 export default {
   name: 'swiper',
-  props: ['bannerlists',],
+  props: ['bannerlists'],
   mounted() {
     new Swiper('.swiper-container', {
       autoplay: true,

@@ -24,17 +24,17 @@
 <script>
 export default {
   computed: {
-    lists() {
+    lists () {
       return this.$store.state.lists
     }
   },
-  created() {
+  created () {
     if (!this.lists) {
-    this.$store.dispatch('getLists')
+      this.$store.dispatch('getLists')
     }
   },
   methods: {
-    toEdit(list) {
+    toEdit (list) {
       this.$router.push({
         name: 'form',
         query: { type: 'edit', instance: list }
