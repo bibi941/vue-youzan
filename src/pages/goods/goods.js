@@ -14,7 +14,7 @@ import qs from 'qs'
 import mixin from '../../modules/js/mixin'
 import Swiper from 'components/Swiper.vue'
 
-let {id} = qs.parse(location.search.substr(1))
+let { id } = qs.parse(location.search.substr(1))
 
 new Vue({
   el: '#app',
@@ -29,7 +29,7 @@ new Vue({
     shouwSkuAble: false,
     skuNumber: 1,
     isAddCart: false,
-    ifAlertCart:false
+    ifAlertCart: false
   },
   created() {
     this.geDetails()
@@ -37,28 +37,32 @@ new Vue({
   },
   methods: {
     getbannerLists() {
-      axios.post(url.details, {
-        id
-      }).then(data => {
-        this.bannerLists = []
-        //把ajax传来的字符串数组改造成模块通用的数据结构
-        data.data.data.imgs.map(url => {
-          this.bannerLists.push({
-            clickUrl: '#',
-            image: url
+      axios
+        .post(url.details, {
+          id
+        })
+        .then(data => {
+          this.bannerLists = []
+          //把ajax传来的字符串数组改造成模块通用的数据结构
+          data.data.data.imgs.map(url => {
+            this.bannerLists.push({
+              clickUrl: '#',
+              image: url
+            })
           })
         })
-      })
     },
     geDetails() {
-      axios.post(url.details, {
-        id
-      }).then((data) => {
-        this.details = data.data.data
-      })
+      axios
+        .post(url.details, {
+          id
+        })
+        .then(data => {
+          this.details = data.data.data
+        })
     },
     getDeal() {
-      axios.post(url.deal, {id}).then((data) => {
+      axios.post(url.deal, { id }).then(data => {
         this.dealLists = data.data.data.list
       })
     },
@@ -73,30 +77,29 @@ new Vue({
       this.shouwSkuAble = true
     },
     changeSkuNumber(number) {
-      if (number<0&&this.skuNumber===1) {
+      if (number < 0 && this.skuNumber === 1) {
         return
-      }this.skuNumber+=number
+      }
+      this.skuNumber += number
     },
     addCart() {
-      axios.post(url.cart, { id, number: this.skuNumber }).then(
-        data => {
-          if (data.data.status === 200) {
-            this.shouwSkuAble = false
-            this.isAddCart = true
-            this.ifAlertCart = true
-            setTimeout(() => {
-              this.ifAlertCart=false
-            }, 1000)
-          }
+      axios.post(url.cartAdd, { id, number: this.skuNumber }).then(data => {
+        if (data) {
+          this.shouwSkuAble = false
+          this.isAddCart = true
+          this.ifAlertCart = true
+          setTimeout(() => {
+            this.ifAlertCart = false
+          }, 1000)
         }
-      )
+      })
     }
   },
   components: {
     Swiper
   },
   watch: {
-    //弹窗出现后，让页面不能滚动    
+    //弹窗出现后，让页面不能滚动
     shouwSkuAble(val, oldval) {
       document.body.style.overflow = val ? 'hidden' : 'auto'
       document.body.style.height = val ? '100%' : 'auto'
@@ -104,6 +107,5 @@ new Vue({
       document.querySelector('html').style.height = val ? '100%' : 'auto'
     }
   },
-  mixins: [mixin],
-
+  mixins: [mixin]
 })
