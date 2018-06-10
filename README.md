@@ -61,7 +61,7 @@ npm run build --report
 
 - 地址管理页(个人中心页)
 
-![](https://user-gold-cdn.xitu.io/2018/6/10/163ea0c00a431e0a?w=470&h=832&f=png&s=45395)
+![](https://user-gold-cdn.xitu.io/2018/6/10/163ea0c00a431e0a?imageView2/2/h/432)
 
 该页面只做了收货地址管理功能
 
